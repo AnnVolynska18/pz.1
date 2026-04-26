@@ -1,0 +1,17 @@
+#include <math.h> // Підключення математичної бібліотеки
+
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+    try {
+        // Зчитуємо значення x з текстового поля та перетворюємо на дійсне число
+        double x = Convert::ToDouble(textBox1->Text); 
+        
+        // Змініть цю формулу на ту, яка вказана у вашому варіанті
+        double y = pow(x, 2) + 5; 
+        
+        // Виводимо результат, перетворивши число назад у рядок
+        textBox2->Text = Convert::ToString(y);
+    }
+    catch (...) {
+        MessageBox::Show("Будь ласка, введіть коректне число!", "Помилка введення", MessageBoxButtons::OK, MessageBoxIcon::Error);
+    }
+}
