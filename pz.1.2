@@ -1,0 +1,44 @@
+#include <math.h>
+
+// Кнопка "Обчислити"
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+    try {
+        // Отримуємо значення сторін трикутника
+        double a = Convert::ToDouble(textBox1->Text);
+        double b = Convert::ToDouble(textBox2->Text);
+        double c = Convert::ToDouble(textBox3->Text);
+        
+        // Перевірка на існування трикутника
+        if (a + b > c && a + c > b && b + c > a) {
+            // Півпериметр
+            double p = (a + b + c) / 2.0;
+            // Формула Герона для площі
+            double s = sqrt(p * (p - a) * (p - b) * (p - c));
+            
+            // Виведення результату
+            textBox4->Text = Convert::ToString(s);
+        } else {
+            MessageBox::Show("Трикутник з такими сторонами не існує!", "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+        }
+    }
+    catch (...) {
+        MessageBox::Show("Перевірте правильність введених даних", "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+    }
+}
+
+// Кнопка "Очистити"
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+    textBox1->Clear();
+    textBox2->Clear();
+    textBox3->Clear();
+    textBox4->Clear();
+}
+
+// Обробник події FormClosing для форми MyForm
+private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+    if (MessageBox::Show("Закрити вікно?", "Вікно буде закрите", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) { 
+        Application::ExitThread(); 
+    } else { 
+        e->Cancel = true; 
+    }
+}
