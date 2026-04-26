@@ -1,0 +1,40 @@
+// Кнопка додавання (+)
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+    double a = Convert::ToDouble(textBox1->Text);
+    double b = Convert::ToDouble(textBox2->Text);
+    textBox3->Text = Convert::ToString(a + b);
+}
+
+// Кнопка віднімання (-)
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+    double a = Convert::ToDouble(textBox1->Text);
+    double b = Convert::ToDouble(textBox2->Text);
+    textBox3->Text = Convert::ToString(a - b);
+}
+
+// Кнопка множення (*)
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+    double a = Convert::ToDouble(textBox1->Text);
+    double b = Convert::ToDouble(textBox2->Text);
+    textBox3->Text = Convert::ToString(a * b);
+}
+
+// Кнопка ділення (/)
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+    double a = Convert::ToDouble(textBox1->Text);
+    double b = Convert::ToDouble(textBox2->Text);
+    
+    if (b != 0) {
+        textBox3->Text = Convert::ToString(a / b);
+    } else {
+        // Заборона поділу на нуль
+        textBox3->Text = "Ділення на нуль!";
+    }
+}
+
+// Кнопка CE (Очистити)
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+    textBox1->Clear();
+    textBox2->Clear();
+    textBox3->Clear();
+}
